@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Image from '@/components/image'
 import Slider from '@/components/slider'
 import Input from '@/components/input'
+import List from '@/components/list'
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ module.exports = new Router({
             path: '/input',
             name: 'Input',
             component: Input
+        },
+        {
+          path:'/list',
+          name:'List',
+          component:List
         }
     ]
 });

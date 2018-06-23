@@ -45,7 +45,7 @@
         width: 750px;
         justify-content: flex-start;
         align-items: flex-start;
-        background-color: lightgoldenrodyellow;
+        background-color: lightcoral;
     }
 
     .indicator {
