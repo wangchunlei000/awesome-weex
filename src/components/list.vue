@@ -1,8 +1,14 @@
 <template>
   <div class="wrapper">
-    <text class="count">Appear items:{{appearMin}} ~ {{appearMax}}</text>
-    <text class="count">appearIds---{{appearIdStr}}</text>
+    
     <list class="list" contentSize={width:700px,height:300px}>
+      <header>
+        <div class="header">
+          <text class="count">Appear items:{{appearMin}} ~ {{appearMax}}</text>
+          <text class="count">appearIds---{{appearIdStr}}</text>
+          <text class="head">HEAD</text>
+        </div>
+      </header>
       <cell class="cell"  v-for="(item,key) in lists"
       :key="key" :index="key"
       append="true">
@@ -24,7 +30,7 @@ export default {
       appearMax:1,
       appearIds:[],
       appearIdStr:'',
-      lists:['1','2','3','4','5','6','7','8','9','10','11']
+      lists:['1','2','3','4','19','5','6','7','8','9','10','11']
     });
   },
   methods:{
@@ -74,25 +80,40 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+.head{
+  width: 750px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 50px;
+  color: #fe751a;
+  text-align: center;
+}
+
+.header{
+   background-color: rgba(162, 217, 192,0.5);
+   padding: 20px;
+}
+
 .count {
     width: 700px;
     font-size: 30px;
-    margin:10px;
     height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
     line-height: 50px;
-    margin-top: 20px;
 }
 
 .list{
-  flex: 1;
 }
 
 .cell{
 }
 
 .panel{
-  width:600px;
+  width: 600px;
   height: 200px;
+  margin-left: 75px;
   margin-top: 30px;
   border-width: 1px;
   border-color: black;
