@@ -7,6 +7,9 @@
         </text>
       </div>
     </div>
+    <div class="click_box">
+      <text class="click">{{clickText}}</text>
+    </div>
   </div>
 </template>
 
@@ -15,10 +18,13 @@ let modal=weex.requireModule('modal');
 export default {
   data(){
     return({
+      clickText:'Click\rMe',
       list: [
-        ['A', 'B', 'C','😁','Hello'],
+        ['Hello', 'World', 'From','DWD','BugKiller'],
         ['D', 'E', 'F','😎'],
-        ['G', 'H', 'I','😓']
+        ['G', 'H', 'I'],
+        ['Hello','World'],
+        ['BugKiller']
       ]
     });
   },
@@ -49,7 +55,7 @@ export default {
   flex: 1;
 }
 .item{
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: #666666;
   flex: 1;
   justify-content: center;
@@ -59,5 +65,26 @@ export default {
   font-size: 30px;
   text-align: center;
   padding: 0;
+}
+.click_box{
+  position: absolute;
+  bottom: 50px;
+  align-items: center;
+  width: 750px;
+}
+.click{
+  border-radius: 100px;
+  background-color: rgba(250, 235, 215, 0.8);
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 40px;
+  border-width: 0.5px;
+  border-color: blueviolet;
+}
+
+.click:active{
+  background-color: rgb(241, 173, 84);
 }
 </style>
