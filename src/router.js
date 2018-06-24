@@ -5,6 +5,10 @@ import Image from '@/components/image'
 import Slider from '@/components/slider'
 import Input from '@/components/input'
 import List from '@/components/list'
+import BindTextRecyclerList from '@/components/recycler-list/BindText'
+import BindAttrsRecycleList from '@/components/recycler-list/BindAttrs'
+import FlexBox from '@/components/FlexBox'
+import GridLayout from '@/components/GridLayout'
 
 Vue.use(Router);
 
@@ -34,6 +38,26 @@ module.exports = new Router({
           path:'/list',
           name:'List',
           component:List
+        },
+        {
+          path:'/recycler/bind-text',
+          name:'BindTextRecyclerList',
+          component:BindTextRecyclerList
+        },
+        {
+          path:'/recycler/bind-attrs',
+          name:'BindAttrsRecyclerList',
+          component:BindAttrsRecycleList
+        },
+        {
+          path:'/flexbox',
+          name:'FlexBox',
+          component:FlexBox
+        },
+        {
+          path:'/gridlayout',
+          name:'GridLayout',
+          component:GridLayout
         }
     ]
 });
