@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     
-    <list class="list" contentSize={width:700px,height:300px}>
+    <list class="list" contentSize={width:700px,height:300px}
+    @loadmore="loadMore" loadmoreoffset="10">
       <header>
         <div class="header">
           <text class="count">Appear items:{{appearMin}} ~ {{appearMax}}</text>
@@ -23,6 +24,8 @@
 </template>
 
 <script>
+let modal=weex.requireModule('modal');
+const LOADMORE_SIZE=5;
 export default {
   data(){
     return({
@@ -66,6 +69,19 @@ export default {
         str+=element+",";
       });
       this.appearIdStr=str;
+    },
+    loadMore(event){
+      modal.toast({
+        message:'loading...',
+        duration:1
+      });
+
+      setTimeout(()=>{
+        const length=this.lists.length;
+        for(let i=length;i<length + LOADMORE_SIZE;++i){
+          this.lists.push(i);
+        }
+      },1000);
     }
   }
 }
@@ -118,6 +134,8 @@ export default {
   border-width: 1px;
   border-color: black;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-radius: 20px;
   background-color: #fe751a;
 }
