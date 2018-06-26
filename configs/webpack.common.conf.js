@@ -16,7 +16,9 @@ const getEntryFileContent = (source, routerpath) => {
   let dependence = `import Vue from 'vue'\n`;
   dependence += `import weex from 'weex-vue-render'\n`;
   let relativePluginPath = helper.rootNode(config.pluginFilePath);
-  let entryContents = fs.readFileSync(source).toString();
+  let entryContents = fs
+    .readFileSync(source)
+    .toString();
   let contents = '';
   entryContents = dependence + entryContents;
   entryContents = entryContents.replace(/\/\* weex initialized/, match => `weex.init(Vue)\n${match}`);
@@ -35,7 +37,9 @@ const getEntryFileContent = (source, routerpath) => {
 
 const getRouterFileContent = (source) => {
   const dependence = `import Vue from 'vue'\n`;
-  let routerContents = fs.readFileSync(source).toString();
+  let routerContents = fs
+    .readFileSync(source)
+    .toString();
   routerContents = dependence + routerContents;
   return routerContents;
 }
@@ -45,37 +49,25 @@ const getEntryFile = () => {
   const routerFile = path.join(vueWebTemp, config.routerFilePath)
   fs.outputFileSync(entryFile, getEntryFileContent(helper.root(config.entryFilePath), routerFile));
   fs.outputFileSync(routerFile, getRouterFileContent(helper.root(config.routerFilePath)));
-  return {
-    index: entryFile
-  }
+  return {index: entryFile}
 }
 
-// The entry file for web needs to add some library. such as vue, weex-vue-render
-// 1. src/entry.js 
-// import Vue from 'vue';
-// import weex from 'weex-vue-render';
+// The entry file for web needs to add some library. such as vue,
+// weex-vue-render
+// 1. src/entry.js import Vue from 'vue'; import weex from 'weex-vue-render';
 // weex.init(Vue);
-// 2. src/router/index.js
-// import Vue from 'vue'
+// 2. src/router/index.js import Vue from 'vue'
 const webEntry = getEntryFile();
-
-
 
 /**
  * Plugins for webpack configuration.
  */
-const plugins = [
-  /*
+const plugins = [/*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.
    * See: https://webpack.js.org/plugins/banner-plugin/
    */
-  new webpack.BannerPlugin({
-    banner: '// { "framework": "Vue"} \n',
-    raw: true,
-    exclude: 'Vue'
-  })
-];
+  new webpack.BannerPlugin({banner: '// { "framework": "Vue"} \n', raw: true, exclude: 'Vue'})];
 
 // Config for compile jsbundle for web.
 const webConfig = {
@@ -91,7 +83,9 @@ const webConfig = {
    * See http://webpack.github.io/docs/configuration.html#resolve
    */
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: [
+      '.js', '.vue', '.json'
+    ],
     alias: {
       '@': helper.resolve('src')
     }
@@ -102,50 +96,60 @@ const webConfig = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-    // webpack 2.0 
+    // webpack 2.0
     rules: [
       {
         test: /\.js$/,
-        use: [{
-          loader: 'babel-loader'
-        }],
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ],
         exclude: config.excludeModuleReg
-      },
-      {
+      }, {
         test: /\.vue(\?[^?]+)?$/,
-        use: [{
-          loader: 'vue-loader',
-          options: Object.assign(vueLoaderConfig({useVue: true, usePostCSS: false}), {
-            /**
+        use: [
+          {
+            loader: 'vue-loader',
+            options: Object.assign(vueLoaderConfig({useVue: true, usePostCSS: false}), {
+              /**
              * important! should use postTransformNode to add $processStyle for
              * inline style prefixing.
              */
-            optimizeSSR: false,
-            postcss: [
-              // to convert weex exclusive styles.
-              require('postcss-plugin-weex')(),
-              require('autoprefixer')({
-                browsers: ['> 0.1%', 'ios >= 8', 'not ie < 12']
-              }),
-              require('postcss-plugin-px2rem')({
-                // base on 750px standard.
-                rootValue: 75,
-                // to leave 1px alone.
-                minPixelValue: 1.01
-              })
-            ],
-            compilerModules: [
-              {
-                postTransformNode: el => {
-                  // to convert vnode for weex components.
-                  require('weex-vue-precompiler')()(el)
+              optimizeSSR: false,
+              postcss: [
+                // to convert weex exclusive styles.
+                require('postcss-plugin-weex')(),
+                require('autoprefixer')({
+                  browsers: ['> 0.1%', 'ios >= 8', 'not ie < 12']
+                }),
+                require('postcss-plugin-px2rem')({
+                  // base on 750px standard.
+                  rootValue: 75,
+                  // to leave 1px alone.
+                  minPixelValue: 1.01
+                })
+              ],
+              compilerModules: [
+                {
+                  postTransformNode: el => {
+                    // to convert vnode for weex components.
+                    require('weex-vue-precompiler')()(el)
+                  }
                 }
-              }
-            ]
-            
-          })
-        }],
+              ]
+
+            })
+          }
+        ],
         exclude: config.excludeModuleReg
+      }, {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 300000,
+          name: '[name].[ext]'
+        }
       }
     ]
   },
@@ -168,7 +172,9 @@ const weexConfig = {
    * See http://webpack.github.io/docs/configuration.html#resolve
    */
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: [
+      '.js', '.vue', '.json'
+    ],
     alias: {
       '@': helper.resolve('src')
     }
@@ -182,17 +188,20 @@ const weexConfig = {
     rules: [
       {
         test: /\.js$/,
-        use: [{
-          loader: 'babel-loader'
-        }],
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ],
         exclude: config.excludeModuleReg
-      },
-      {
+      }, {
         test: /\.vue(\?[^?]+)?$/,
-        use: [{
-          loader: 'weex-loader',
-          options: vueLoaderConfig({useVue: false})
-        }],
+        use: [
+          {
+            loader: 'weex-loader',
+            options: vueLoaderConfig({useVue: false})
+          }
+        ],
         exclude: config.excludeModuleReg
       }
     ]

@@ -27,21 +27,20 @@ const config = {
       aggregateTimeout: 300,
       poll: false
     },
-        /**
+    /**
      * Source Maps
      */
     // https://webpack.js.org/configuration/devtool/#development
     devtool: 'eval-source-map',
     env: JSON.stringify('development'),
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
+    // If you have problems debugging vue-files in devtools, set this to false - it
+    // *may* help https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
-    // CSS Sourcemaps off by default because relative paths are "buggy"
-    // with this option, according to the CSS-Loader README
-    // (https://github.com/webpack/css-loader#sourcemaps)
-    // In our experience, they generally work as expected,
-    // just be aware of this issue when enabling this option.
+    // CSS Sourcemaps off by default because relative paths are "buggy" with this
+    // option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps) In our experience, they
+    // generally work as expected, just be aware of this issue when enabling this
+    // option.
     cssSourceMap: false,
     proxyTable: {},
     autoOpenBrowser: false,
@@ -117,6 +116,10 @@ const config = {
     util: false,
     vm: false,
     zlib: false
+  },
+  loadImage(imgName) {
+    var image = require('./resources/' + imgName);
+    return image;
   }
 }
 module.exports = config;
