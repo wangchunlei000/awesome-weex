@@ -3,14 +3,11 @@ const ROOT = path.resolve(__dirname, '..');
 // const ip = require('ip').address();
 const ip = "127.0.0.1";
 
-const calculatePort = 8081;
-
 const config = {
     root: ROOT,
     // webpack-dev-server
     pluginConfigPath: 'plugins/plugins.json',
     pluginFilePath: 'plugins/plugins.js',
-    calculatePort:calculatePort,
     // router
     routerFilePath: 'router.js',
     // common
@@ -121,10 +118,10 @@ const config = {
         util: false,
         vm: false,
         zlib: false
-    },
-    loadImage(imgName) {
-        var image = require('./resources/' + imgName);
-        return image;
-    }
+    }/*,
+     loadImage(imgName) {
+     var image = require('./resources/' + imgName);
+     return image;
+     }*/
 }
 module.exports = config;

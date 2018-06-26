@@ -1,15 +1,17 @@
-<!--
 <template>
     <div class="wrapper">
         <div class="title background_white">
             <text class="title_text">{{title}}</text>
             <image class="back_icon" :src="backIcon"/>
         </div>
+        <div class="content">
+
+        </div>
     </div>
 </template>
 
 <script>
-    import imageLoader from '../../configs/config'
+    const imageLoader = require('../util/ImageLoader')
     export default {
         data(){
             return ({
@@ -27,6 +29,11 @@
         background-color: #f7f0f0;
     }
 
+    .content {
+        flex: 1;
+        width: 750px;
+    }
+
     .title {
         width: 750px;
         flex-direction: row;
@@ -39,6 +46,8 @@
     .back_icon {
         width: 40px;
         height: 40px;
+        position: absolute;
+        left: 20px;
     }
 
     .center_vertical {
@@ -53,4 +62,3 @@
         background-color: white;
     }
 </style>
--->
