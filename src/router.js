@@ -9,6 +9,7 @@ import BindTextRecyclerList from '@/components/recycler-list/BindText'
 import BindAttrsRecycleList from '@/components/recycler-list/BindAttrs'
 import FlexBox from '@/components/FlexBox'
 import GridLayout from '@/components/GridLayout'
+import ServiceProtocal from '@/components/ServiceProtocal'
 
 Vue.use(Router);
 
@@ -58,6 +59,11 @@ module.exports = new Router({
           path:'/gridlayout',
           name:'GridLayout',
           component:GridLayout
+        },
+        {
+          path:'/service',
+          name:'ServiceProtocal',
+          component:ServiceProtocal
         }
     ]
 });
