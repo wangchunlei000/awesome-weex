@@ -36,34 +36,34 @@ module.exports = new Router({
             component: Input
         },
         {
-          path:'/list',
-          name:'List',
-          component:List
+            path: '/list',
+            name: 'List',
+            component: List
         },
         {
-          path:'/recycler/bind-text',
-          name:'BindTextRecyclerList',
-          component:BindTextRecyclerList
+            path: '/recycler/bind-text',
+            name: 'BindTextRecyclerList',
+            component: BindTextRecyclerList
         },
         {
-          path:'/recycler/bind-attrs',
-          name:'BindAttrsRecyclerList',
-          component:BindAttrsRecycleList
+            path: '/recycler/bind-attrs',
+            name: 'BindAttrsRecyclerList',
+            component: BindAttrsRecycleList
         },
         {
-          path:'/flexbox',
-          name:'FlexBox',
-          component:FlexBox
+            path: '/flexbox',
+            name: 'FlexBox',
+            component: FlexBox
         },
         {
-          path:'/gridlayout',
-          name:'GridLayout',
-          component:GridLayout
+            path: '/gridlayout',
+            name: 'GridLayout',
+            component: GridLayout
         },
         {
-          path:'/service',
-          name:'ServiceProtocal',
-          component:ServiceProtocal
+            path: '/service',
+            name: 'ServiceProtocal',
+            component: ServiceProtocal
         }
     ]
 });
