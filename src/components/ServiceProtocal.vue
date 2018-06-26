@@ -19,6 +19,8 @@
 // const imageLoader = require('../util/ImageLoader')
 import { loadImage } from "../util/ImageLoader";
 let modal = weex.requireModule("modal");
+let navigator = weex.requireModule("navigator");
+// const router = require("../router");
 export default {
   data() {
     return {
@@ -49,6 +51,7 @@ export default {
           message: "你点击了点我达用户协议",
           duration: 1
         });
+        this.$router.push("/gridlayout");
       } else {
         modal.toast({
           message: "哥们，点错了！",
