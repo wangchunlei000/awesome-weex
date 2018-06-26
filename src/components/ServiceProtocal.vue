@@ -105,8 +105,8 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 36px;
+  padding-bottom: 36px;
   border-bottom-color: #e6e6e6;
   border-bottom-width: 1px;
 }

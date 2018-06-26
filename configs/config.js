@@ -1,7 +1,7 @@
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 // const ip = require('ip').address();
-const ip = "127.0.0.1";
+const ip = "192.168.1.102";
 
 const config = {
     root: ROOT,
