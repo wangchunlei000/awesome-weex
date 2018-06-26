@@ -81,7 +81,7 @@ export default {
   /* justify-content: space-around; */
   align-items: center;
   background-color: white;
-  border-bottom-color: #e6e6e6;
+  border-bottom-color: #e5e5e5;
   border-bottom-width: 1px;
   padding-top: 40px;
   padding-left: 30px;
