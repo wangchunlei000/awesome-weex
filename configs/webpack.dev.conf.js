@@ -163,32 +163,32 @@ webpack(weexConfig, (err, stats) => {
 
 module.exports = new Promise((resolve, reject) => {
 
-    // portfinder.basePort = /*process.env.PORT ||*/ config.dev.port
-    // portfinder.getPort((err, port) => {
-    //     if (err) {
-    //         reject(err)
-    //     } else {
-    // publish the new Port, necessary for e2e tests
-    let port = config.dev.port;
-    let ip = config.dev.host;
-    process.env.PORT = port;
-    // config.calculatePort = port;
-    // add port to devServer config
-    devWebpackConfig.devServer.port = port
-    devWebpackConfig.devServer.public = `${ip}:${port}`
-    // Add FriendlyErrorsPlugin
-    devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-            messages: [
-                `Your application is running here: ${chalk.yellow(`http://${devWebpackConfig.devServer.host}:${port}`)}.`
-            ],
-        },
-        onErrors: config.dev.notifyOnErrors
-            ? utils.createNotifierCallback()
-            : undefined
-    }))
-
-    resolve(devWebpackConfig)
-    //     }
-    // })
+    portfinder.basePort = /*process.env.PORT ||*/ config.dev.port
+    portfinder.getPort((err, port) => {
+        if (err) {
+            reject(err)
+        } else {
+            // publish the new Port, necessary for e2e tests
+            // let port = config.dev.port;
+            // let ip = config.dev.host;
+            process.env.PORT = port;
+            config.dev.port = port;
+            // config.calculatePort = port;
+            // add port to devServer config
+            devWebpackConfig.devServer.port = port
+            devWebpackConfig.devServer.public = `${ip}:${port}`
+            // Add FriendlyErrorsPlugin
+            devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
+                compilationSuccessInfo: {
+                    messages: [
+                        `Your application is running here: ${chalk.yellow(`http://${devWebpackConfig.devServer.host}:${port}`)}.`
+                    ],
+                },
+                onErrors: config.dev.notifyOnErrors
+                    ? utils.createNotifierCallback()
+                    : undefined
+            }))
+            resolve(devWebpackConfig)
+        }
+    })
 })
