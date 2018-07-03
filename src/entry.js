@@ -12,5 +12,5 @@ meta.setViewport({
 })
 
 new Vue(Vue.util.extend({el: '#root', router}, App));
-router.push('/gridlayout');
+router.push('/alipay');
 

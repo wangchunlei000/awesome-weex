@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="title background_white">
-            <text class="title_text">{{title}}</text>
+            <text class="title_text" :value="title"></text>
             <image class="back_icon" :src="backIcon"/>
         </div>
         <div class="content">

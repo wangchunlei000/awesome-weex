@@ -10,6 +10,7 @@ import BindAttrsRecycleList from '@/components/recycler-list/BindAttrs'
 import FlexBox from '@/components/FlexBox'
 import GridLayout from '@/components/GridLayout'
 import ServiceProtocal from '@/components/ServiceProtocal'
+import Alipay from '@/components/Alipay'
 
 Vue.use(Router);
 
@@ -64,6 +65,11 @@ module.exports = new Router({
             path: '/service',
             name: 'ServiceProtocal',
             component: ServiceProtocal
+        },
+        {
+          path:'/alipay',
+          name:'Alipay',
+          component:Alipay
         }
     ]
 });
